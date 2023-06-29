@@ -1,26 +1,40 @@
 import React from 'react'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-const HotelCard = () => {
+import {Card,CardContent,CardMedia,Typography, CardActionArea, Rating} from '@mui/material';
+import { useNavigate } from 'react-router';
+
+const HotelCard = (props) => {
+    const navigate=useNavigate();
+    const hotelDetials = props?.hotel || {};
+    const onCardClick = () => {
+        
+        navigate(`hotelDetails/${hotelDetials.slug}`)
+    }
+
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, marginBottom: 7 }} onClick={onCardClick}>
             <CardActionArea>
+
                 <CardMedia
                     component="img"
                     height="250"
-                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS91jLGBwY5yUoOURiALIdJWmiYci3z1P6yBylBxOao-Q&s"
+                    image={hotelDetials?.thumbnail}
                     alt="hotel"
                 />
+
                 <CardContent>
+
                     <Typography style={{}} gutterBottom variant="h6" component="div">
-                        Lizard
+                        {hotelDetials.address}
                     </Typography>
-                    <Typography variant="body2" color="text.primary">
-                        $120 night
+
+                    <Typography variant="body1" color="text.primary">
+                        ${hotelDetials.pricePerNight} night
                     </Typography>
+
+                    <Typography variant='body1'>
+                        <Rating name="read-only" value={Math.floor(hotelDetials.rating)} readOnly />
+                    </Typography>
+
                 </CardContent>
             </CardActionArea>
         </Card>
