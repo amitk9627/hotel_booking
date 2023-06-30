@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Grid, Container, Typography } from '@mui/material';
 import HotelCard from '../components/HotelCard';
 import axios from 'axios';
-
+import {useLocation} from 'react-router'
 const Home = () => {
     const [hotels, setHotels] = useState([]);
+    const locationDetials=useLocation();
     useEffect(() => {
         axios.get("https://hotels-api-4ltr.onrender.com/api/hotels")
             .then((res) => {
@@ -15,6 +16,7 @@ const Home = () => {
             })
 
     }, [])
+   
 
     return (
         <>
@@ -22,7 +24,7 @@ const Home = () => {
 
             <Container maxWidth="lg" sx={{ mt: 10 }}>
                 <Typography variant="h4" gutterBottom >
-                    juivbbibnikibn
+                    Welcome {locationDetials.state.userName}
                 </Typography>
                 <Grid container spacing={2} >
                     {
