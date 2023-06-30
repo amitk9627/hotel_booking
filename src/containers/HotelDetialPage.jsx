@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Container, Grid, Typography, } from '@mui/material'
 import { useParams } from "react-router"
 
-
 const HotelDetialPage = () => {
   const [hotelInfo, setHotelInfos] = useState([]);
   const param = useParams();
@@ -15,11 +14,10 @@ const HotelDetialPage = () => {
         setHotelInfos(res.data);
       })
   }, [param.slug])
-  console.log(hotelInfo);
+  
   return (
     <>
-    
-      <Container maxWidth="lg" sx={{mt:10}}>
+      <Container maxWidth="lg" sx={{ mt: 10 }}>
         <Typography variant="h4" gutterBottom>
           {hotelInfo.address}
         </Typography>
@@ -31,10 +29,10 @@ const HotelDetialPage = () => {
                   src={`${item.img}`}
                   style={{
                     width: "95%",
-                    height:300,
+                    height: 300,
                     borderRadius: "5px",
                     margin: 5,
-                    boxShadow:"0px 0px 5px 3px grey"
+                    boxShadow: "0px 0px 5px 3px grey"
                   }}
                   alt="fhbdgh"
 

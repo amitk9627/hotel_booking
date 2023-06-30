@@ -21,10 +21,9 @@ const Home = () => {
     return (
         <>
 
-
             <Container maxWidth="lg" sx={{ mt: 10 }}>
                 <Typography variant="h4" gutterBottom >
-                    Welcome {locationDetials.state.userName}
+                    Welcome {locationDetials?.state?.userName}
                 </Typography>
                 <Grid container spacing={2} >
                     {

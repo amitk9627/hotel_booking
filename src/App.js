@@ -1,21 +1,23 @@
 import './App.css';
-import Navbar from './components/Navbar'
 import Home from './containers/Home';
-import {BrowserRouter,Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HotelDetialPage from './containers/HotelDetialPage';
 import LoginPage from './containers/LoginPage';
+import LayOut from './containers/LayOut';
+
 function App() {
   return (
     <div className="App">
-      <Navbar />
+
       <BrowserRouter>
-      <Routes>
-      <Route path='/' element={<LoginPage />}/>
-        <Route path='home' element={<Home />}/>
-        <Route path='hotelDetails/:slug' element={<HotelDetialPage />}/>
-      </Routes>
+     
+        <Routes>
+          <Route path='/' element={<LoginPage />} />
+          <Route path='home' element={<LayOut> <Home /> </LayOut>} />
+          <Route path='home/hotelDetails/:slug' element={<LayOut> <HotelDetialPage /> </LayOut>} />
+        </Routes>
       </BrowserRouter>
-      
+
     </div>
   );
 }
