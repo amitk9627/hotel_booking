@@ -7,7 +7,7 @@ const LayOut = (props) => {
     useEffect(()=>{
         auth.onAuthStateChanged((user)=>{
            
-            if(user==null){
+            if(!user){
                 Navigate("/");
 
             }
