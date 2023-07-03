@@ -7,7 +7,7 @@ const HotelCard = (props) => {
     const hotelDetials = props?.hotel || {};
     const onCardClick = () => {
         
-        navigate(`hotelDetails/${hotelDetials.slug}`)
+        navigate(`/hotelDetails/${hotelDetials.slug}`)
     }
 
     return (

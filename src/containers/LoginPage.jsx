@@ -12,12 +12,15 @@ const LoginPage = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const[msg,setMsg]=useState("")
 
     const handleLogin = () => {
         let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
         let pass = password.length >= 8;
         if (regex.test(email) && pass) {
             Navigate("/home");
+        }else{
+            setMsg("Something Wrong")
         }
     }
     
@@ -37,9 +40,14 @@ const LoginPage = () => {
         <Container style={{ background: "rgba(0,0,0,0.2)" }}>
 
             <Grid container justifyContent="center" alignItems="center" textAlign="center" sx={{ height: "100vh", display: "flex" }}>
-                <Grid item lg={6} sx={{ bgcolor: "#fff", p: "40px" }}>
+                
+                    <Grid item lg={6} sx={{ bgcolor: "#fff", p: "40px" }}>
+                   
                     <Typography variant="h4" gutterBottom>
                         Login
+                    </Typography>
+                     <Typography variant="h5" color={"red"}>
+                        {msg}
                     </Typography>
                     <Grid item sx={{ mb: "20px" }}>
                         <TextField
