@@ -12,18 +12,9 @@ const LoginPage = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const[msg,setMsg]=useState("")
+    const [msg, setMsg] = useState("")
 
-    const handleLogin = () => {
-        let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-        let pass = password.length >= 8;
-        if (regex.test(email) && pass) {
-            Navigate("/home");
-        }else{
-            setMsg("Something Wrong")
-        }
-    }
-    
+    // sign with google
     const LoginWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then(res => {
@@ -34,19 +25,33 @@ const LoginPage = () => {
                         userName
                     }
                 })
-            });
+            }).catch((e) => {
+                console.log("error", e)
+            })
+    }
+
+    // button login
+    const handleLogin = () => {
+        Navigate("/home");
+        let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+        let pass = password.length >= 8;
+        if (regex.test(email) && pass) {
+            Navigate("/home");
+        } else {
+            setMsg("Something Wrong")
+        }
     }
     return (
         <Container style={{ background: "rgba(0,0,0,0.2)" }}>
 
             <Grid container justifyContent="center" alignItems="center" textAlign="center" sx={{ height: "100vh", display: "flex" }}>
-                
-                    <Grid item lg={6} sx={{ bgcolor: "#fff", p: "40px" }}>
-                   
+
+                <Grid item lg={6} sx={{ bgcolor: "#fff", p: "40px" }}>
+
                     <Typography variant="h4" gutterBottom>
                         Login
                     </Typography>
-                     <Typography variant="h5" color={"red"}>
+                    <Typography variant="h5" color={"red"}>
                         {msg}
                     </Typography>
                     <Grid item sx={{ mb: "20px" }}>
@@ -72,10 +77,12 @@ const LoginPage = () => {
                     </Grid>
 
                     <Grid>
-                        <Button variant="contained" sx={{ width: "70%", p: "10px", fontSize: "1.2rem", mb: "20px" }} onClick={handleLogin}>Login</Button>
+                        <Button variant="contained" sx={{ width: "70%", p: "10px", fontSize: "1.2rem", mb: "20px" }} onClick={handleLogin} >
+                            Login
+                        </Button>
                     </Grid>
 
-                    <Grid>
+                    <Grid sx={{ pt: "10px" }}>
                         <Button onClick={LoginWithGoogle} sx={{ width: "70%", p: "5px", fontSize: ".7rem" }}>
                             <GoogleIcon sx={{ mr: 1 }} />
                             <span>Signin with Google</span>
@@ -84,17 +91,9 @@ const LoginPage = () => {
                 </Grid>
             </Grid>
 
-            {/* <Grid container justifyContent="center" alignItems="center" sx={{ display: "flex", }}>
-                <Grid item>
-                    <Button onClick={LoginWithGoogle} variant="contained" style={{ display: "flex", justifyContent: "center", alignItems: "center", paddig: "2px" }}>
-                        <GoogleIcon sx={{ mr: 1 }} />
-                        <span>Signin with Google</span>
-                    </Button>
-                </Grid>
-            </Grid> */}
+
         </Container>
     )
 }
 
 export default LoginPage
-//35 min left

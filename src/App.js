@@ -13,8 +13,8 @@ function App() {
      
         <Routes>
           <Route path='/' element={<LoginPage />} />
-          <Route path='home' element={<LayOut> <Home /> </LayOut>} />
-          <Route path='home/hotelDetails/:slug' element={<LayOut> <HotelDetialPage /> </LayOut>} />
+          <Route path='/home' element={<LayOut> <Home /> </LayOut>} />
+          <Route path='/home/hotelDetails/:slug' element={<LayOut> <HotelDetialPage /> </LayOut>} />
         </Routes>
       </BrowserRouter>
 
